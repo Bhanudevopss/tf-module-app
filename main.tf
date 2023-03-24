@@ -72,4 +72,3 @@ resource "aws_security_group" "main" {
     { Name = "${var.component}-${var.env}" }
   )
 }
-

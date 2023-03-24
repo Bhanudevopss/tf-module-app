@@ -4,3 +4,4 @@ data "aws_ami" "ami" {
   owners           = ["self"]
 }
 
+

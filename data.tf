@@ -4,4 +4,5 @@ data "aws_ami" "ami" {
   owners           = ["self"]
 }
 
+data "aws_caller_identity" "account" {}
 

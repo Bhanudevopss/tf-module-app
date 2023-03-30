@@ -18,7 +18,7 @@ resource "aws_launch_template" "main" {
 
     tags = merge(
       var.tags,
-      { Name = "${var.component}-${var.env}" }
+      { Name = "${var.component}-${var.env}", Monitor = "yes" }
     )
   }
 
@@ -66,6 +66,14 @@ resource "aws_security_group" "main" {
     to_port          = var.port
     protocol         = "tcp"
     cidr_blocks      = var.allow_app_to
+  }
+
+  ingress {
+    description = "PROMETHEUS"
+    from_port   = 9100
+    to_port     = 9100
+    protocol    = "tcp"
+    cidr_blocks = var.monitoring_nodes
   }
 
   egress {
